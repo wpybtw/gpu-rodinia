@@ -18,7 +18,7 @@ The CUDA Kernel for Applying BFS on a loaded Graph. Created By Pawan Harish
 #ifndef _KERNEL_H_
 #define _KERNEL_H_
 
-#define REG 4
+#define REG 10
 
 __global__ void
 Kernel(Node *g_graph_nodes, int *g_graph_edges, bool *g_graph_mask, bool *g_updating_graph_mask, bool *g_graph_visited, int *g_cost, int no_of_nodes)
@@ -37,12 +37,12 @@ Kernel(Node *g_graph_nodes, int *g_graph_edges, bool *g_graph_mask, bool *g_upda
 			r2 = g_graph_edges[k++];
 			r3 = g_graph_edges[k++];
 			r4 = g_graph_edges[k++];
-			// r5 = g_graph_edges[k++];
-			// r6 = g_graph_edges[k++];
-			// r7 = g_graph_edges[k++];
-			// r8 = g_graph_edges[k++];
-			// r9 = g_graph_edges[k++];
-			// r10 = g_graph_edges[k++];
+			r5 = g_graph_edges[k++];
+			r6 = g_graph_edges[k++];
+			r7 = g_graph_edges[k++];
+			r8 = g_graph_edges[k++];
+			r9 = g_graph_edges[k++];
+			r10 = g_graph_edges[k++];
 			if (!g_graph_visited[r1])
 			{
 				g_cost[r1] = g_cost[tid] + 1;
@@ -67,41 +67,41 @@ Kernel(Node *g_graph_nodes, int *g_graph_edges, bool *g_graph_mask, bool *g_upda
 				g_updating_graph_mask[r4] = true;
 			}
 
-			// if (!g_graph_visited[r5])
-			// {
-			// 	g_cost[r5] = g_cost[tid] + 1;
-			// 	g_updating_graph_mask[r5] = true;
-			// }
+			if (!g_graph_visited[r5])
+			{
+				g_cost[r5] = g_cost[tid] + 1;
+				g_updating_graph_mask[r5] = true;
+			}
 
-			// if (!g_graph_visited[r6])
-			// {
-			// 	g_cost[r6] = g_cost[tid] + 1;
-			// 	g_updating_graph_mask[r6] = true;
-			// }
+			if (!g_graph_visited[r6])
+			{
+				g_cost[r6] = g_cost[tid] + 1;
+				g_updating_graph_mask[r6] = true;
+			}
 
-			// if (!g_graph_visited[r7])
-			// {
-			// 	g_cost[r7] = g_cost[tid] + 1;
-			// 	g_updating_graph_mask[r7] = true;
-			// }
+			if (!g_graph_visited[r7])
+			{
+				g_cost[r7] = g_cost[tid] + 1;
+				g_updating_graph_mask[r7] = true;
+			}
 
-			// if (!g_graph_visited[r8])
-			// {
-			// 	g_cost[r8] = g_cost[tid] + 1;
-			// 	g_updating_graph_mask[r8] = true;
-			// }
+			if (!g_graph_visited[r8])
+			{
+				g_cost[r8] = g_cost[tid] + 1;
+				g_updating_graph_mask[r8] = true;
+			}
 
-			// if (!g_graph_visited[r9])
-			// {
-			// 	g_cost[r9] = g_cost[tid] + 1;
-			// 	g_updating_graph_mask[r9] = true;
-			// }
+			if (!g_graph_visited[r9])
+			{
+				g_cost[r9] = g_cost[tid] + 1;
+				g_updating_graph_mask[r9] = true;
+			}
 
-			// if (!g_graph_visited[r10])
-			// {
-			// 	g_cost[r10] = g_cost[tid] + 1;
-			// 	g_updating_graph_mask[r10] = true;
-			// }
+			if (!g_graph_visited[r10])
+			{
+				g_cost[r10] = g_cost[tid] + 1;
+				g_updating_graph_mask[r10] = true;
+			}
 		}
 
 		for (size_t i = k; i < (g_graph_nodes[tid].no_of_edges + g_graph_nodes[tid].starting); i++)
